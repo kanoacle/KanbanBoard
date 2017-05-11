@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+}
+#board {
+  position: absolute;
+  left: 20vw;
+  bottom: 10vh;
+  border: 3px solid #333;
+  border-radius: 25px;
+  box-shadow: 3px 3px 3px #333;
+  height: 75%;
+  width: 75%;
+  overflow: scroll;
+}
+h1 {
+  text-align: center;
+}
+h3 {
+  margin: 3%;
+}
+p {
+  margin: 1%;
+}
+li {
+  list-style: none;
+}
+#new-card {
+  position: absolute;
+  left: 2.5%;
+  top: 25%;
+  width: 15%;
+  height: 50%;
+  border-radius: 10px;
+}
+.card-info {
+  border: none;
+  width: 95%;
+  height: 75px;
+  font-size: 16px;
+  padding-left: 2.5%;
+  border-radius: 10px;
+}
+.card-info:focus {
+  outline: none;
+}
+#add-card {
+  border-radius: 7.5px;
+  height: 30px;
+  width: 100%;
+}
+#add-card:focus {
+  outline: none;
+}
+#queue {
+  min-height: 100%;
+  width: 33%;
+  float: left;
+  border-right: 3px solid #333;
+}
+#doing {
+  min-height: 100%;
+  width: 33%;
+  display: inline-block;
+}
+#done {
+  min-height: 100%;
+  width: 33%;
+  float: right;
+  border-left: 3px solid #333;
+}
+.queue-card {
+  border: 1px solid black;
+  width: 200px;
+  height: 125px;
+  text-align: center;
+  margin: 5px;
+}
+.doing-card {
+  border: 1px solid black;
+  width: 200px;
+  height: 125px;
+  text-align: center;
+  margin: 5px;
+}
+.done-card {
+  border: 1px solid black;
+  width: 200px;
+  height: 125px;
+  text-align: center;
+  margin: 5px 50px 5px 5px;
+}
+.arrow {
+  margin: 2.5% auto;
+  cursor: pointer;
+}
