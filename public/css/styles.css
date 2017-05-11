@@ -1,95 +1,147 @@
+* {
+  font-family: sans-serif;
+}
 body {
   margin: 0;
 }
 #board {
-  position: absolute;
-  left: 20vw;
-  bottom: 10vh;
-  border: 3px solid #333;
+  margin: 0 auto;
   border-radius: 25px;
-  box-shadow: 3px 3px 3px #333;
-  height: 75%;
-  width: 75%;
-  overflow: scroll;
+  border: 3px solid #333;
+  box-shadow: 3px 3px 5px #333;
+  height: 500px;
+  width: 960px;
 }
 h1 {
+  margin-bottom: 0;
   text-align: center;
+  font-family: 'Permanent Marker', sans-serif;
+}
+h2 {
+  margin-top: 0;
+  padding: 20px 0 20px 0;
+  text-align: center;
+  position: fixed;
+  width: inherit;
+  background-color: #FFA800;
+  font-family: 'Permanent Marker', sans-serif;
+}
+#new {
+  border-radius: 21px 0 0 0;
+  background-color: #FF475B;
+}
+#cmplt {
+  border-radius: 0 21px 0 0;
+  width: inherit;
+  background-color: #28A63B;
 }
 h3 {
-  margin: 3%;
+  margin: 0;
+  font-family: 'Permanent Marker', sans-serif;
 }
 p {
-  margin: 1%;
+  margin: 0;
+  font-family: 'Gloria Hallelujah', sans-serif;
+}
+ul {
+  margin-top: 100px;
+  padding: 0;
 }
 li {
   list-style: none;
 }
 #new-card {
-  position: absolute;
-  left: 2.5%;
   top: 25%;
-  width: 15%;
-  height: 50%;
+  width: 900px;
+  margin: 0 auto;
+  height: 30px;
   border-radius: 10px;
+}
+.new-card-info {
+  width: 20%;
+  display: inline-block;
 }
 .card-info {
   border: none;
   width: 95%;
-  height: 75px;
+  height: 25px;
   font-size: 16px;
   padding-left: 2.5%;
   border-radius: 10px;
+  font-family: 'Gloria Hallelujah', sans-serif;
 }
 .card-info:focus {
   outline: none;
 }
+#errr {
+  width: 15%;
+  padding-left: 2.5%;
+  height: 30px;
+  margin: 0 auto;
+  color: red;
+}
 #add-card {
   border-radius: 7.5px;
   height: 30px;
-  width: 100%;
+  line-height: 25px;
+  width: 95%;
+  font-family: 'Gloria Hallelujah', sans-serif;
+  font-size: 20px;
 }
-#add-card:focus {
+button:focus {
   outline: none;
 }
 #queue {
-  min-height: 100%;
-  width: 33%;
+  height: 100%;
+  width: 318px;
   float: left;
-  border-right: 3px solid #333;
+  overflow: scroll;
 }
 #doing {
-  min-height: 100%;
-  width: 33%;
+  height: 100%;
+  width: 318px;
   display: inline-block;
+  border-right: 3px solid #333;
+  border-left: 3px solid #333;
+  overflow: scroll;
 }
 #done {
-  min-height: 100%;
-  width: 33%;
-  float: right;
-  border-left: 3px solid #333;
+  height: 100%;
+  width: 318px;
+  display: inline-block;
+  overflow: scroll;
 }
-.queue-card {
+.card {
+  border-radius: 10px;
   border: 1px solid black;
-  width: 200px;
-  height: 125px;
+  width: 300px;
   text-align: center;
-  margin: 5px;
+  margin: 5px auto;
 }
-.doing-card {
-  border: 1px solid black;
-  width: 200px;
-  height: 125px;
-  text-align: center;
-  margin: 5px;
-}
-.done-card {
-  border: 1px solid black;
-  width: 200px;
-  height: 125px;
-  text-align: center;
-  margin: 5px 50px 5px 5px;
-}
-.arrow {
+.arrow-right-queue {
   margin: 2.5% auto;
   cursor: pointer;
+  background-color: #FFA800;
+  border-radius: 10px;
+}
+.arrow-left-doing {
+  margin: 2.5% auto;
+  cursor: pointer;
+  background-color: #FF475B;
+  border-radius: 10px 0 0 10px;
+  border-right: none;
+
+}
+.arrow-right-doing {
+  margin: 2.5% auto;
+  cursor: pointer;
+  background-color: #28A63B;
+  border-radius: 0 10px 10px 0;
+  border-left: none;
+}
+.arrow-left-done {
+  margin: 2.5% auto;
+  cursor: pointer;
+  background-color: #FFA800;
+  border-radius: 10px;
 }

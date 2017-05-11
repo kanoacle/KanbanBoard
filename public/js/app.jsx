@@ -30,12 +30,12 @@ const getKanbanCards = () => new Promise((resolve, reject) => {
 });
 
 const QueueCard = (props) => (
-  <li className="queue-card">
+  <li className="card">
     <h3>{props.card.title}</h3>
     <p>Priority: {props.card.priority}</p>
     <p>Created By: {props.card.created_by}</p>
     <p>Assigned To: {props.card.assigned_to}</p>
-    <button className="arrow" onClick={props.moveRight.bind(this, props.card)}>⇨</button>
+    <button className="arrow-right-queue" onClick={props.moveRight.bind(this, props.card)}>⇨</button>
   </li>
 );
 const QueueCardList = ({cards, moveRight}) => (
@@ -46,12 +46,12 @@ const QueueCardList = ({cards, moveRight}) => (
   </ul>
 );
 const DoingCard = (props) => (
-  <li className="doing-card">
+  <li className="card">
     <h3>{props.card.title}</h3>
     <p>Priority: {props.card.priority}</p>
     <p>Created By: {props.card.created_by}</p>
     <p>Assigned To: {props.card.assigned_to}</p>
-    <button className="arrow" onClick={props.moveLeft.bind(this, props.card)}>⇦</button><button className="arrow" onClick={props.moveRight.bind(this, props.card)}>⇨</button>
+    <button className="arrow-left-doing" onClick={props.moveLeft.bind(this, props.card)}>⇦</button><button className="arrow-right-doing" onClick={props.moveRight.bind(this, props.card)}>⇨</button>
   </li>
 );
 const DoingCardList = ({cards, moveRight, moveLeft}) => (
@@ -62,12 +62,12 @@ const DoingCardList = ({cards, moveRight, moveLeft}) => (
   </ul>
 );
 const DoneCard = (props) => (
-  <li className="queue-card">
+  <li className="card">
     <h3>{props.card.title}</h3>
     <p>Priority: {props.card.priority}</p>
     <p>Created By: {props.card.created_by}</p>
     <p>Assigned To: {props.card.assigned_to}</p>
-    <button className="arrow" onClick={props.moveLeft.bind(this, props.card)}>⇦</button>
+    <button className="arrow-left-done" onClick={props.moveLeft.bind(this, props.card)}>⇦</button>
   </li>
 );
 const DoneCardList = ({cards, moveLeft}) => (
@@ -124,22 +124,21 @@ class NewCardForm extends React.Component {
   render(){
     return (
       <form id="new-card" onSubmit={this.handleSubmit}>
-        <div>
+        <div className="new-card-info">
           <input className="card-info" type="text" placeholder="Title" onChange={this.handleTitleChange} value={this.state.title} />
         </div>
-        <div>
+        <div className="new-card-info">
           <input className="card-info" type="text" placeholder="Priority" onChange={this.handlePriorityChange} value={this.state.priority} />
         </div>
-        <div>
+        <div className="new-card-info">
           <input className="card-info" type="text" placeholder="Created By" onChange={this.handleCreatorChange} value={this.state.created_by} />
         </div>
-        <div>
+        <div className="new-card-info">
           <input className="card-info" type="text" placeholder="Assigned To" onChange={this.handleAssignmentChange} value={this.state.assigned_to} />
         </div>
-        <div>
+        <div className="new-card-info">
           <button id="add-card" type="submit">Add Card</button>
         </div>
-        <p id="errr"></p>
       </form>
     )
   }
@@ -198,16 +197,20 @@ class App extends React.Component {
   render(){
     return (
       <div id="view">
-        <h1>Kanban Board</h1>
+        <h1>Kanban</h1>
         <NewCardForm addCard={this.addCard}/>
+        <p id="errr"></p>
         <div id="board">
           <div id="queue">
+            <h2 id="new">Queue</h2>
             <QueueCardList moveRight={this.moveRight} cards={this.state.cards}/>
           </div>
           <div id="doing">
+            <h2>In Progress</h2>
             <DoingCardList moveLeft={this.moveLeft} moveRight={this.moveRight} cards={this.state.doingCards}/>
           </div>
           <div id="done">
+            <h2 id="cmplt">Completed</h2>
             <DoneCardList moveLeft={this.moveLeft} cards={this.state.doneCards}/>
           </div>
         </div>
