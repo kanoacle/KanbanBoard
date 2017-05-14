@@ -1,10 +1,10 @@
 {
   "development": {
-    "username": "root",
+    "username": "kanoacleveland",
     "password": null,
-    "database": "database_development",
+    "database": "kanban_board",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "postgresql"
   },
   "test": {
     "username": "root",

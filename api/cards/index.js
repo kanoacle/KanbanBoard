@@ -14,38 +14,35 @@ Cards.get('/', (req, res) => {
         model: User,
         as: 'Assignee'
       }
-    ]
+    ],
+    order: '"updatedAt" DESC'
   })
   .then(cards => {
     res.json(cards);
   });
 });
 
-Cards.get('/:id', (req, res) => {
-  Card.find({
-    where: {
-      id: req.params.id,
-    },
-    include: [
-      {
-        model: User,
-        as: 'Creator'
-      },
-      {
-        model: User,
-        as: 'Assignee'
-      }
-    ]
-  })
-  .then( (Card) => {
-    res.json(Card);
-  });
-});
-
 Cards.post('/', (req, res) => {
   Card.create(req.body)
-  .then( (Card) => {
-    res.json(Card);
+  .then(card => {
+    return Card.find({
+      where: {
+        id: card.id
+      },
+      include: [
+        {
+          model: User,
+          as: 'Creator'
+        },
+        {
+          model: User,
+          as: 'Assignee'
+        }
+      ]
+    });
+  })
+  .then(card => {
+    res.json(card);
   })
   .catch( (err) => {
     res.json(err);
@@ -54,18 +51,14 @@ Cards.post('/', (req, res) => {
 
 Cards.put('/:id', (req, res) => {
   Card.update({
-    title: req.body.title,
-    status: parseInt(req.body.status),
-    priority: parseInt(req.body.priority),
-    created_by: req.body.created_by,
-    assigned_to: req.body.assigned_to
+    status: req.body.status
   }, {
     where: {
       id: req.params.id,
     }
   })
-  .then( (Card) => {
-    return Card.find( {
+  .then(card => {
+    return Card.find({
       where: {
         id: req.params.id
       },
@@ -81,8 +74,8 @@ Cards.put('/:id', (req, res) => {
       ]
     });
   })
-  .then( (Card) => {
-    res.json(Card);
+  .then(card => {
+    res.json(card);
   })
   .catch( (err) => {
     res.json(err);
@@ -95,10 +88,25 @@ Cards.delete('/:id', (req, res) => {
       id: req.params.id
     }
   })
-  .then( () => {
-    res.json({success: true});
+  .then((cards) => {
+    Card.all({
+    include: [
+      {
+        model: User,
+        as: 'Creator'
+      },
+      {
+        model: User,
+        as: 'Assignee'
+      }
+    ],
+    order: '"updatedAt" DESC'
   })
-  .catch( () => {
+  .then(cards => {
+    res.json(cards);
+  });
+  })
+  .catch(() => {
     res.json({sucess: false});
   });
 });

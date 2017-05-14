@@ -1,6 +1,6 @@
 /*jshint esversion: 6*/
 const express = require('express');
-const Users = express.router();
+const Users = express.Router();
 const {User} = require('../../models');
 
 Users.get('/', (req, res) => {
@@ -20,6 +20,7 @@ Users.get('/:id', (req, res) => {
 });
 
 Users.post('/', (req, res) => {
+  console.log(req.body);
   User.create({
     username: req.body.username,
     password: req.body.password

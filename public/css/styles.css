@@ -1,5 +1,23 @@
-* {
-  font-family: sans-serif;
+@keyframes pulse {
+  0%    {transform: scale(1);}
+  10%   {transform: scale(1);}
+  20%   {transform: scale(1.01);}
+  30%   {transform: scale(1.015);}
+  40%   {transform: scale(1.02);}
+  50%   {transform: scale(1.025);}
+  60%   {transform: scale(1.02);}
+  70%   {transform: scale(1.015);}
+  80%   {transform: scale(1.01);}
+  90%   {transform: scale(1.005);}
+  100%  {transform: scale(1);}
+}
+@keyframes colors {
+  0%    {color: #FF475B;}
+  20%   {color: #FF475B;}
+  40%   {color: #FFA800;}
+  60%   {color: #28A63B;}
+  80%   {color: #FFA800;}
+  100%  {color: #FF475B;}
 }
 body {
   margin: 0;
@@ -13,9 +31,9 @@ body {
   width: 960px;
 }
 h1 {
-  margin-bottom: 0;
   text-align: center;
   font-family: 'Permanent Marker', sans-serif;
+  animation: pulse 1s infinite, colors 10s infinite;
 }
 h2 {
   margin-top: 0;
@@ -69,6 +87,7 @@ li {
   padding-left: 2.5%;
   border-radius: 10px;
   font-family: 'Gloria Hallelujah', sans-serif;
+  text-align: center;
 }
 .card-info:focus {
   outline: none;
@@ -78,7 +97,7 @@ li {
   padding-left: 2.5%;
   height: 30px;
   margin: 0 auto;
-  color: red;
+  color: #FF475B;
 }
 #add-card {
   border-radius: 7.5px;
@@ -87,6 +106,8 @@ li {
   width: 95%;
   font-family: 'Gloria Hallelujah', sans-serif;
   font-size: 20px;
+  animation: pulse 1s infinite;
+  background-color: #FF475B;
 }
 button:focus {
   outline: none;
@@ -113,19 +134,18 @@ button:focus {
 }
 .card {
   border-radius: 10px;
-  border: 1px solid black;
-  width: 300px;
+  width: 275px;
   text-align: center;
   margin: 5px auto;
 }
 .arrow-right-queue {
-  margin: 2.5% auto;
+  margin: 2.5% auto 0 auto;
   cursor: pointer;
   background-color: #FFA800;
   border-radius: 10px;
 }
 .arrow-left-doing {
-  margin: 2.5% auto;
+  margin: 2.5% auto 0 auto;
   cursor: pointer;
   background-color: #FF475B;
   border-radius: 10px 0 0 10px;
@@ -133,15 +153,23 @@ button:focus {
 
 }
 .arrow-right-doing {
-  margin: 2.5% auto;
+  margin: 2.5% auto 0 auto;
   cursor: pointer;
   background-color: #28A63B;
   border-radius: 0 10px 10px 0;
   border-left: none;
 }
 .arrow-left-done {
-  margin: 2.5% auto;
+  margin: 2.5% auto 0 auto;
   cursor: pointer;
   background-color: #FFA800;
   border-radius: 10px;
+}
+.dlt-btn {
+  border: none;
+  font-family: 'Permanent Marker', sans-serif;
+  background-color: transparent;
+  font-size: 14px;
+  color: red;
+  cursor: pointer;
 }
