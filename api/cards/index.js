@@ -1,9 +1,10 @@
 /*jshint esversion: 6*/
 const express = require('express');
 const Cards = express.Router();
-const { Card, User } = require('../../models');
+const {Card, User} = require('../../models');
 
 Cards.get('/', (req, res) => {
+  console.log('hi!');
   Card.all({
     include: [
       {

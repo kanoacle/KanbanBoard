@@ -15,7 +15,7 @@ window.NewCardForm = class NewCardForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   addCard(card){
-    if (card.title !== ""&&card.priority !== ""&&card.created !== ""&&card.assigned_to !== "") {
+    if (card.title !== ""&&card.priority !== ""&&card.created_by !== ""&&card.assigned_to !== "") {
       this.props.addCard(card);
       this.setState({title: "", priority: "", created_by: "", assigned_to: ""});
       let a = document.getElementById('errr');

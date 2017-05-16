@@ -107,7 +107,8 @@ li {
   outline: none;
 }
 #errr {
-  width: 15%;
+  text-align: center;
+  width: 20%;
   padding-left: 2.5%;
   height: 30px;
   margin: 0 auto;

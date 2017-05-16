@@ -1,4 +1,6 @@
-window.NewCardForm = class NewCardForm extends React.Component {
+/*jshint esversion: 6*/
+import React, {Component} from 'react';
+class NewCardForm extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -63,3 +65,4 @@ window.NewCardForm = class NewCardForm extends React.Component {
     )
   }
 }
+export default NewCardForm;
