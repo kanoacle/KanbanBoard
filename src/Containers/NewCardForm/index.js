@@ -17,14 +17,13 @@ class NewCardForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   addCard(card){
+    let a = document.getElementById('errr');
     if (card.title !== ""&&card.priority !== ""&&card.created !== ""&&card.assigned_to !== "") {
       this.props.addCard(card);
       this.setState({title: "", priority: "", created_by: "", assigned_to: ""});
-      let a = document.getElementById('errr');
-      a.innerHTML = '';
+      a.style.color = 'black';
     } else {
-      let a = document.getElementById('errr');
-      a.innerHTML = 'Please fill out all fields';
+      a.style.color = '#FF475B';
     }
   }
   handleSubmit(event) {
@@ -46,21 +45,16 @@ class NewCardForm extends Component {
   render(){
     return (
       <form id="new-card" onSubmit={this.handleSubmit}>
-        <div className="new-card-info">
-          <input className="card-info" type="text" placeholder="Title" onChange={this.handleTitleChange} value={this.state.title} />
-        </div>
-        <div className="new-card-info">
-          <input className="card-info" type="text" placeholder="Priority (Lo, Med, Hi)" onChange={this.handlePriorityChange} value={this.state.priority} />
-        </div>
-        <div className="new-card-info">
-          <input className="card-info" type="text" placeholder="Created By" onChange={this.handleCreatorChange} value={this.state.created_by} />
-        </div>
-        <div className="new-card-info">
-          <input className="card-info" type="text" placeholder="Assigned To" onChange={this.handleAssignmentChange} value={this.state.assigned_to} />
-        </div>
-        <div className="new-card-info">
-          <button id="add-card" type="submit">Create Task</button>
-        </div>
+        <p id="errr">Please fill out all fields to create a new task.</p>
+        <label>Title:</label>
+        <input className="card-info" type="text" placeholder="ex. Walk the cat" onChange={this.handleTitleChange} value={this.state.title} />
+        <label>Priority Level:</label>
+        <input className="card-info" type="text" placeholder="ex. atmospheric" onChange={this.handlePriorityChange} value={this.state.priority} />
+        <label>Created By:</label>
+        <input className="card-info" type="text" placeholder="You, obviously" onChange={this.handleCreatorChange} value={this.state.created_by} />
+        <label>Assigned To:</label>
+        <input className="card-info" type="text" placeholder="ex. tha_H0mie" onChange={this.handleAssignmentChange} value={this.state.assigned_to} />
+        <button id="add-card" type="submit">Create</button>
       </form>
     )
   }

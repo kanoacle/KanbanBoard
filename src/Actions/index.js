@@ -3,6 +3,7 @@ export const LOAD_CARDS = 'LOAD_CARDS';
 export const ADD_CARD = 'ADD_CARD';
 export const DELETE_CARD = 'DELETE_CARD';
 export const MOVE = 'MOVE';
+export const ADD_USER = 'ADD_USER';
 
 export const loadCards = cards => {
   return {
@@ -25,6 +26,13 @@ export const destroyCard = cards => {
 export const moveCard = card => {
   return {
     type: MOVE,
+    card
+  };
+};
+
+export const addUser = card => {
+  return {
+    type: ADD_USER,
     card
   };
 };

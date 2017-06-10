@@ -11,69 +11,53 @@
   90%   {transform: scale(1.005);}
   100%  {transform: scale(1);}
 }
-@keyframes title-pulse {
-  0%    {transform: scale(1);}
-  10%   {transform: scale(1.02);}
-  20%   {transform: scale(1.04);}
-  30%   {transform: scale(1.06);}
-  40%   {transform: scale(1.08);}
-  50%   {transform: scale(1.1);}
-  60%   {transform: scale(1.08);}
-  70%   {transform: scale(1.06);}
-  80%   {transform: scale(1.04);}
-  90%   {transform: scale(1.02);}
-  100%  {transform: scale(1);}
-}
-@keyframes colors {
-  0%    {color: #FF475B;}
-  30%   {color: #FF475B;}
-  33%   {color: #FFA800;}
-  64%   {color: #FFA800;}
-  67%   {color: #28A63B;}
-  97%   {color: #28A63B;}
-  100%  {color: #FF475B;}
-}
 body {
   margin: 0;
 }
 #board {
-  margin: 0 auto;
-  border-radius: 25px;
+  position: absolute;
+  left: 25%;
+  top: 2.5%;
+  border-radius: 5px;
   border: 3px solid #333;
   box-shadow: 3px 3px 5px #333;
-  height: 500px;
-  width: 960px;
+  height: 95%;
+  width: 933px;
 }
 h1 {
+  font-family: 'Overlock SC', sans-serif;
+  font-size: 48px;
   text-align: center;
-  font-family: 'Permanent Marker', sans-serif;
-  animation: title-pulse 1s infinite, colors 12s infinite;
+  color: black;
+  width: 15%;
+  position: absolute;
+  left: 5%;
 }
 h2 {
+  font-size: 28px;
+  font-family: 'Overlock SC', sans-serif;
   margin-top: 0;
   padding: 20px 0 20px 0;
   text-align: center;
   position: fixed;
   width: inherit;
   background-color: #FFA800;
-  font-family: 'Permanent Marker', sans-serif;
 }
 #new {
-  border-radius: 21px 0 0 0;
   background-color: #FF475B;
 }
 #cmplt {
-  border-radius: 0 21px 0 0;
   width: inherit;
   background-color: #28A63B;
 }
 h3 {
+  font-size: 24px;
+  font-family: 'Overlock SC', sans-serif;
+  font-weight: extra-bold;
   margin: 0;
-  font-family: 'Permanent Marker', sans-serif;
 }
 p {
-  margin: 0;
-  font-family: 'Gloria Hallelujah', sans-serif;
+  font-family: 'Asap', sans-serif;
 }
 ul {
   margin-top: 100px;
@@ -83,68 +67,84 @@ li {
   list-style: none;
 }
 #new-card {
-  top: 25%;
-  width: 900px;
-  margin: 0 auto;
-  height: 30px;
-  border-radius: 10px;
-}
-.new-card-info {
+  border: 3px solid #333;
+  position: absolute;
+  top: 30%;
+  left: 2.5%;
   width: 20%;
-  display: inline-block;
+  margin: 0 auto;
+  height: 60%;
+  border-radius: 5px;
+}
+label {
+  font-family: 'Asap', sans-serif;
+  padding-left: 2.5%;
+  font-size: 18px;
+  font-weight: bold;
 }
 .card-info {
-  border: none;
-  width: 95%;
-  height: 25px;
+  border: 1px solid #333;
+  border-radius: 3px;
+  width: 90%;
+  height: 20px;
+  line-height: 20px;
   font-size: 16px;
   padding-left: 2.5%;
-  border-radius: 10px;
-  font-family: 'Gloria Hallelujah', sans-serif;
-  text-align: center;
+  font-family: 'Asap', sans-serif;
+  margin: 5px 2.5% 15px 2.5%;
 }
 .card-info:focus {
   outline: none;
 }
 #errr {
-  width: 15%;
-  padding-left: 2.5%;
+  font-size: 1.25vw;
+  margin: 15% auto;
+  text-align: center;
+  line-height: 20px;
   height: 30px;
-  margin: 0 auto;
-  color: #FF475B;
+  width: 65%;
 }
 #add-card {
+  position: relative;
+  left: 25%;
   border-radius: 7.5px;
   height: 30px;
-  line-height: 25px;
-  width: 95%;
-  font-family: 'Gloria Hallelujah', sans-serif;
+  line-height: 2px;
+  width: 50%;
+  font-family: 'Asap', sans-serif;
   font-size: 20px;
   animation: pulse 1s infinite;
   background-color: #FF475B;
+  cursor: pointer;
 }
 button:focus {
   outline: none;
 }
 #queue {
+  border: none;
   height: 100%;
-  width: 318px;
+  width: 309px;
   float: left;
   overflow: scroll;
+  overflow-x: hidden;
 }
 #doing {
+  border: none;
   height: 100%;
-  width: 318px;
+  width: 309px;
   display: inline-block;
   border-right: 3px solid #333;
   border-left: 3px solid #333;
   overflow: scroll;
+  overflow-x: hidden;
 }
 #done {
+  border: none;
   height: 100%;
-  width: 318px;
+  width: 309px;
   display: inline-block;
   overflow: scroll;
+  overflow-x: hidden;
 }
 .card {
   border-radius: 10px;
@@ -152,14 +152,17 @@ button:focus {
   text-align: center;
   margin: 5px auto;
 }
+.card-deet {
+  margin: 5px auto;
+}
 .arrow-right-queue {
-  margin: 2.5% auto 0 auto;
+  margin: 1.5% auto 1.5% auto;
   cursor: pointer;
   background-color: #FFA800;
   border-radius: 10px;
 }
 .arrow-left-doing {
-  margin: 2.5% auto 0 auto;
+  margin: 1.5% auto 1.5% auto;
   cursor: pointer;
   background-color: #FF475B;
   border-radius: 10px 0 0 10px;
@@ -167,21 +170,22 @@ button:focus {
 
 }
 .arrow-right-doing {
-  margin: 2.5% auto 0 auto;
+  margin: 1.5% auto 1.5% auto;
   cursor: pointer;
   background-color: #28A63B;
   border-radius: 0 10px 10px 0;
   border-left: none;
 }
 .arrow-left-done {
-  margin: 2.5% auto 0 auto;
+  margin: 1.5% auto 1.5% auto;
   cursor: pointer;
   background-color: #FFA800;
   border-radius: 10px;
 }
 .dlt-btn {
+  font-family: 'Overlock SC', sans-serif;
+  font-weight: bold;
   border: none;
-  font-family: 'Permanent Marker', sans-serif;
   background-color: transparent;
   font-size: 14px;
   color: #787878;
@@ -189,4 +193,97 @@ button:focus {
 }
 .dlt-btn:hover {
   color: #FF475B;
+}
+#new-user {
+  border-radius: 5px;
+  position: absolute;
+  left: 2.5%;
+  top: 18%;
+  width: 10%;
+}
+.user-info {
+  display: none;
+  border: 1px solid #333;
+  border-radius: 3px;
+  width: 90%;
+  height: 20px;
+  padding-left: 2.5%;
+  margin: 5px 2.5% 5px 2.5%;
+}
+.user-info:focus {
+  outline: none;
+}
+#sign-up {
+  text-align: center;
+  position: relative;
+  width: 95%;
+  left: 2%;
+  border-radius: 7.5px;
+  height: 30px;
+  line-height: 20px;
+  font-family: 'Asap', sans-serif;
+  font-size: 20px;
+  background-color: #FFA800;
+  cursor: pointer;
+}
+#login {
+  border-radius: 5px;
+  position: absolute;
+  left: 12.5%;
+  top: 18%;
+  width: 10%;
+}
+.user-deet {
+  display: none;
+  border: 1px solid #333;
+  border-radius: 3px;
+  width: 90%;
+  height: 20px;
+  padding-left: 2.5%;
+  margin: 5px 2.5% 5px 2.5%;
+}
+.user-deet:focus {
+  outline: none;
+}
+#log-in {
+  position: relative;
+  width: 95%;
+  left: 2%;
+  border-radius: 7.5px;
+  height: 30px;
+  line-height: 20px;
+  font-family: 'Asap', sans-serif;
+  font-size: 20px;
+  background-color: #28A63B;
+  cursor: pointer;
+}
+#new-name-val {
+  position: absolute;
+  top: -12.5%;
+  left: 80%;
+  display: none;
+}
+#new-pass-val {
+  position: absolute;
+  top: 17.5%;
+  left: 80%;
+  display: none;
+}
+#canc-sign-up {
+  width: 40%;
+  display: none;
+  position: absolute;
+  left: 30%;
+  top: 82.5%;
+  text-align: center;
+  cursor: pointer;
+}
+#canc-login {
+  width: 40%;
+  display: none;
+  position: absolute;
+  left: 30%;
+  top: 82.5%;
+  text-align: center;
+  cursor: pointer;
 }

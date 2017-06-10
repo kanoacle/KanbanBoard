@@ -5,7 +5,9 @@ import QueueCardList from '../../Components/QueueCard/index.js';
 import DoingCardList from '../../Components/DoingCard/index.js';
 import DoneCardList from '../../Components/DoneCard/index.js';
 import NewCardForm from '../../Containers/NewCardForm/index.js';
-import {getCards, postCard, putCard, deleteCard} from '../../API';
+import LoginForm from '../../Containers/LoginForm/index.js';
+import SignUpForm from '../../Containers/SignUpForm/index.js';
+import {getCards, postCard, putCard, deleteCard, postUser} from '../../API';
 import {loadCards, addCard, destroyCard, moveCard} from '../../Actions';
 
 class App extends Component {
@@ -28,17 +30,23 @@ class App extends Component {
     cards.splice(currIndex, 1)
     let id = card.id;
     if (card.status === 'done') {
-      let status = JSON.stringify({status: 'doing'});
-      putCard(id, status)
-      .then(card => {
-        this.props.moveCard(card);
-      });
+      let mvLeft = confirm('You sure you want to keep working on this?');
+      if (mvLeft) {
+        let status = JSON.stringify({status: 'doing'});
+        putCard(id, status)
+        .then(card => {
+          this.props.moveCard(card);
+        });
+      }
     } else if (card.status === 'doing') {
-      let status = JSON.stringify({status: 'queue'});
-      putCard(id, status)
-      .then(card => {
-        this.props.moveCard(card);
-      });
+      let mvLeft = confirm(`You're gonna give up before you even start?`);
+      if (mvLeft) {
+        let status = JSON.stringify({status: 'queue'});
+        putCard(id, status)
+        .then(card => {
+          this.props.moveCard(card);
+        });
+      }
     }
   }
   moveRight(card) {
@@ -66,20 +74,27 @@ class App extends Component {
       this.props.addCard(card);
     });
   }
+  addUser(user){
+    postUser(JSON.stringify(user));
+  }
   deleteCard(card){
     let id = card.id;
-    deleteCard(id, JSON.stringify(card))
-    .then(cards => {
-      this.props.destroyCard(cards);
-    });
+    let dlt = confirm(`You sure you want to delete this item? There ain't no undo button.`);
+    if (dlt) {
+      deleteCard(id, JSON.stringify(card))
+      .then(cards => {
+        this.props.destroyCard(cards);
+      });
+    }
   }
 
   render(){
     return (
       <div id="view">
         <h1>Kanban</h1>
+        <SignUpForm addUser={this.addUser}/>
+        <LoginForm/>
         <NewCardForm addCard={this.addCard}/>
-        <p id="errr"></p>
         <div id="board">
           <div id="queue">
             <h2 id="new">To Do</h2>
